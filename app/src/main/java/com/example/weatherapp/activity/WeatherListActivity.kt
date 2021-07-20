@@ -152,12 +152,11 @@ class WeatherListActivity : AppCompatActivity() {
 
     override fun onStop() {
         super.onStop()
-        mFusedLocationClient!!.removeLocationUpdates(mLocationCallback);
+        mFusedLocationClient!!.removeLocationUpdates(mLocationCallback)
     }
 
     private val onWeatherClick: (Int) -> Unit = { pos ->
         val intent = Intent(this, WeatherDetailsActivity::class.java)
-        intent.putExtra("data",  viewModel.weatherDetails.value)
         startActivity(intent)
     }
 }

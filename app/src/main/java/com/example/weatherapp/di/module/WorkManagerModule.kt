@@ -11,7 +11,7 @@ import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
-class WorkMangerModule {
+class WorkManagerModule {
 
     @Provides
     @Singleton

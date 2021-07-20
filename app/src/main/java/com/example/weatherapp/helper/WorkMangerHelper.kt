@@ -1,4 +1,4 @@
-package com.example.chatapplication.di.helper
+package com.example.weatherapp.helper
 
 import android.content.Context
 import androidx.work.WorkInfo

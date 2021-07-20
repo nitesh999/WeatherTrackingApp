@@ -17,6 +17,6 @@ class WeatherRepositoryModule {
     @Singleton
     fun providesWeatherRepository(@Named("appcontext") context: Context, networkHelper: NetworkHelper, workManager: WorkManager,
                                   periodicWorkRequest: PeriodicWorkRequest): WeatherRepository {
-        return WeatherRepository(context, networkHelper, workManager, periodicWorkRequest)
+        return WeatherRepository(context, networkHelper.weatherApi, workManager, periodicWorkRequest)
     }
 }

@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.chatapplication.di.component.AppComponent
 import com.example.weatherapp.WeatherApplication
 import com.example.weatherapp.repository.WeatherRepository
+import kotlinx.coroutines.Dispatchers
 import javax.inject.Inject
 
 class WeatherLookupViewModelFactory : ViewModelProvider.Factory {
@@ -17,7 +18,7 @@ class WeatherLookupViewModelFactory : ViewModelProvider.Factory {
         if (modelClass.isAssignableFrom(WeatherLookupViewModel::class.java)) {
             appComponent.inject(this)
             @Suppress("UNCHECKED_CAST")
-            return WeatherLookupViewModel.getInstance(weatherRepository) as T
+            return WeatherLookupViewModel.getInstance(weatherRepository, Dispatchers.IO) as T
         }
         throw IllegalArgumentException("Unable to construct viewmodel")
     }

@@ -2,13 +2,11 @@ package com.example.weatherapp.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.weatherapp.WeatherApplication
 import com.example.weatherapp.network.WeatherDetails
 import com.example.weatherapp.repository.WeatherRepository
 import kotlinx.coroutines.*
 
-class WeatherLookupViewModel(val weatherRepository: WeatherRepository) : ViewModel() {
-
+class WeatherLookupViewModel(val weatherRepository: WeatherRepository, val dispatcher:CoroutineDispatcher) : ViewModel() {
 
     /**
      * This is the main scope for all coroutines launched by MainViewModel.
@@ -16,7 +14,7 @@ class WeatherLookupViewModel(val weatherRepository: WeatherRepository) : ViewMod
      * Since we pass viewModelJob, you can cancel all coroutines launched by uiScope by calling
      * viewModelJob.cancel()
      */
-    val viewModelScope = CoroutineScope(Dispatchers.IO)
+    val viewModelScope = CoroutineScope(dispatcher + SupervisorJob())
 
     var showProgress: MutableLiveData<Boolean>
     var showStatus: MutableLiveData<String>
@@ -24,9 +22,9 @@ class WeatherLookupViewModel(val weatherRepository: WeatherRepository) : ViewMod
 
     companion object {
         private var instance : WeatherLookupViewModel? = null
-        fun getInstance(weatherRepository: WeatherRepository) =
+        fun getInstance(weatherRepository: WeatherRepository, dispatchers: CoroutineDispatcher) =
             instance ?: synchronized(WeatherLookupViewModel::class.java){
-                instance ?: WeatherLookupViewModel(weatherRepository).also { instance = it }
+                instance ?: WeatherLookupViewModel(weatherRepository, dispatchers).also { instance = it }
             }
     }
 

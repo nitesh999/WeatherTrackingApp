@@ -1,0 +1,43 @@
+{
+  "coord": {
+    "lon": 77.5946,
+    "lat": 12.9716
+  },
+  "weather": [
+    {
+      "id": 803,
+      "main": "Clouds",
+      "description": "broken clouds",
+      "icon": "04d"
+    }
+  ],
+  "base": "stations",
+  "main": {
+    "temp": 299.52,
+    "feels_like": 299.52,
+    "temp_min": 299,
+    "temp_max": 300.16,
+    "pressure": 940,
+    "humidity": 76
+  },
+  "visibility": 6000,
+  "wind": {
+    "speed": 2.57,
+    "deg": 230
+  },
+  "clouds": {
+    "all": 75
+  },
+  "dt": 1626695900,
+  "sys": {
+    "type": 2,
+    "id": 2017753,
+    "country": "IN",
+    "sunrise": 1626654715,
+    "sunset": 1626700770
+  },
+  "timezone": 19800,
+  "id": 1277333,
+  "name": "Bengaluru",
+  "cod": 200
+}
